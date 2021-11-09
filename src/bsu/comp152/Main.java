@@ -31,6 +31,10 @@ public class Main {
         var usefulData = response.body();
         var dataParser = new Gson();
         UniversityDataType[] uniList = dataParser.fromJson(usefulData, UniversityDataType[].class); //these [] mean array
-        System.out.println(usefulData);
+
+        //This will loop through the University Data and print each toString on a separate line
+        for (var currentUniv : uniList){
+            System.out.println(currentUniv);
+        }
     }
 }
