@@ -10,11 +10,12 @@ import java.net.http.HttpResponse;
 public class Main {
 
     public static void main(String[] args) {
+        //Get the website
         var dataGrabber = HttpClient.newHttpClient();
         var requestBuilder = HttpRequest.newBuilder();
         var webRequest = requestBuilder.uri(URI.create("http://universities.hipolabs.com/search?name=Young")).build();
 
-        //Get the website and say if there was an issue
+        //Say if there was an issue with the website
         HttpResponse<String> response = null;
         try {
             response = dataGrabber.send(webRequest, HttpResponse.BodyHandlers.ofString());
@@ -29,7 +30,7 @@ public class Main {
             System.out.println("Something went wrong getting data from the network");
             System.exit(-1);
         }
-        
+
         //Put the website data into a Gson arraylist
         var usefulData = response.body();
         var dataParser = new Gson();
